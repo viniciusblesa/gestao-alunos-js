@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de Gestão de Alunos desenvolvido em JavaScript utilizando Programação Orientada a Objetos, cálculo automático de médias e armazenamento em LocalStorage.">
+    <meta name="keywords" content="gestão de alunos, sistema escolar, javascript, poo, localstorage, média escolar, cadastro de alunos">
+    <meta name="author" content="Vinícius Blesa">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+    <title>Gestão de Alunos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Nota Escolar</h1>
+        <form id="formAluno">
+            <input
+                type="text"
+                id="nome"
+                placeholder="Nome do aluno">
+            <input
+                type="number"
+                id="nota1"
+                placeholder="Nota 1"
+                min="0"
+                max="10"
+                step="0.1">
+            <input
+                type="number"
+                id="nota2"
+                placeholder="Nota 2"
+                min="0"
+                max="10"
+                step="0.1">
+            <button type="submit">➕ Adicionar Aluno</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Nota 1</th>
+                    <th>Nota 2</th>
+                    <th>Média</th>
+                    <th>Situação</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaAlunos">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

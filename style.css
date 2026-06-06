@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fc;
+    color: #333;
+    padding: 40px 20px;
+}
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+h1{
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 30px;
+}
+/* FORMULÁRIO */
+form{
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+input{
+    flex: 1;
+    min-width: 180px;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+input:focus{
+    border-color: #2563eb;
+    box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+}
+button{
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:hover{
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+/* TABELA */
+table{
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+thead{
+    background: #2563eb;
+    color: white;
+}
+th,
+td{
+    padding: 15px;
+    text-align: center;
+}
+tbody tr{
+    border-bottom: 1px solid #eeeeee;
+}
+tbody tr:hover{
+    background: #f8fafc;
+}
+tbody tr:last-child{
+    border-bottom: none;
+}
+/* SITUAÇÃO */
+.aprovado{
+    color: #16a34a;
+    font-weight: bold;
+}
+.reprovado{
+    color: #dc2626;
+    font-weight: bold;
+}
+/* BOTÃO EXCLUIR */
+.btn-excluir{
+    background: #ef4444;
+}
+.btn-excluir:hover{
+    background: #dc2626;
+}
+/* MENSAGEM DE LISTA VAZIA */
+.sem-alunos{
+    color: #777;
+    font-style: italic;
+    padding: 20px;
+}
+/* RESPONSIVIDADE */
+@media (max-width: 768px){
+    body{
+        padding: 15px;
+    }
+    form{
+        flex-direction: column;
+    }
+    input,
+    button{
+        width: 100%;
+    }
+    table{
+        font-size: 14px;
+    }
+    th,
+    td{
+        padding: 10px;
+    }
+}
