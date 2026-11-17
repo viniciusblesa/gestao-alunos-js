@@ -30,7 +30,7 @@ class App {
         this.busca = document.querySelector("#busca");
         this.botaoTema = document.querySelector("#alternarTema");
         this.iconeTema = document.querySelector("#iconeTema");
-        this.tema = localStorage.getItem("tema") === "escuro" ? "escuro" : "claro";
+        this.tema = localStorage.getItem("tema") === "claro" ? "claro" : "escuro";
 
         this.form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -58,7 +58,7 @@ class App {
         const acao = temaEscuro ? "Ativar tema claro" : "Ativar tema noturno";
         this.botaoTema.setAttribute("aria-label", acao);
         this.botaoTema.title = acao;
-        document.querySelector('meta[name="theme-color"]').content = temaEscuro ? "#151d1a" : "#f4f6f2";
+        document.querySelector('meta[name="theme-color"]').content = temaEscuro ? "#101827" : "#f3f6fa";
     }
 
     carregarAlunos() {
