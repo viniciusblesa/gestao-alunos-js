@@ -3,53 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistema de Gestão de Alunos desenvolvido em JavaScript utilizando Programação Orientada a Objetos, cálculo automático de médias e armazenamento em LocalStorage.">
-    <meta name="keywords" content="gestão de alunos, sistema escolar, javascript, poo, localstorage, média escolar, cadastro de alunos">
+    <meta name="description" content="Cadastre alunos, acompanhe notas e médias e gerencie resultados escolares em um só lugar.">
+    <meta name="keywords" content="gestão de alunos, notas escolares, médias, cadastro escolar">
     <meta name="author" content="Vinícius Blesa">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#2563eb">
-    <title>Gestão de Alunos</title>
+    <meta name="theme-color" content="#f4f6f2">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gestão de Alunos | Caderno Escolar">
+    <meta property="og:description" content="Gerencie alunos, notas e resultados escolares com praticidade.">
+    <title>Gestão de Alunos | Caderno Escolar</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>📚 Nota Escolar</h1>
-        <form id="formAluno">
-            <input
-                type="text"
-                id="nome"
-                placeholder="Nome do aluno">
-            <input
-                type="number"
-                id="nota1"
-                placeholder="Nota 1"
-                min="0"
-                max="10"
-                step="0.1">
-            <input
-                type="number"
-                id="nota2"
-                placeholder="Nota 2"
-                min="0"
-                max="10"
-                step="0.1">
-            <button type="submit">➕ Adicionar Aluno</button>
-        </form>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Nota 1</th>
-                    <th>Nota 2</th>
-                    <th>Média</th>
-                    <th>Situação</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody id="tabelaAlunos">
-            </tbody>
-        </table>
-    </div>
+    <main class="container">
+        <header class="page-header">
+            <div class="brand-lockup">
+                <div class="brand-mark" aria-hidden="true">GE</div>
+                <div>
+                    <p class="eyebrow">PAINEL ACADÊMICO</p>
+                    <h1>Gestão de alunos</h1>
+                    <p class="subtitle">Notas e resultados da sua turma, em um só lugar.</p>
+                </div>
+            </div>
+            <button class="theme-toggle" id="alternarTema" type="button" aria-label="Ativar tema noturno" title="Ativar tema noturno">
+                <span id="iconeTema" aria-hidden="true">☾</span>
+            </button>
+        </header>
+
+        <section class="overview" aria-label="Resumo da turma">
+            <div class="overview-item">
+                <span class="overview-label">Alunos cadastrados</span>
+                <strong id="totalAlunos">0</strong>
+            </div>
+            <div class="overview-item">
+                <span class="overview-label">Aprovados</span>
+                <strong id="totalAprovados">0</strong>
+            </div>
+            <div class="overview-item">
+                <span class="overview-label">Reprovados</span>
+                <strong id="totalReprovados">0</strong>
+            </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="formTitulo">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">CADASTRO</p>
+                    <h2 id="formTitulo">Adicionar aluno</h2>
+                </div>
+                <span class="grade-note">Notas de 0 a 10</span>
+            </div>
+
+            <form id="formAluno">
+                <div class="field field-name">
+                    <label for="nome">Nome do aluno</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex.: Maria Oliveira" maxlength="80" autocomplete="name" required>
+                </div>
+                <div class="field">
+                    <label for="nota1">Nota 1</label>
+                    <input type="number" id="nota1" name="nota1" placeholder="0,0" min="0" max="10" step="0.1" inputmode="decimal" required>
+                </div>
+                <div class="field">
+                    <label for="nota2">Nota 2</label>
+                    <input type="number" id="nota2" name="nota2" placeholder="0,0" min="0" max="10" step="0.1" inputmode="decimal" required>
+                </div>
+                <div class="form-actions">
+                    <button class="button button-primary" id="botaoSalvar" type="submit">Adicionar aluno</button>
+                    <button class="button button-quiet" id="botaoCancelar" type="button" hidden>Cancelar edição</button>
+                </div>
+            </form>
+            <p class="form-message" id="mensagem" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="list-section" aria-labelledby="listaTitulo">
+            <div class="list-heading">
+                <div>
+                    <p class="eyebrow">ACOMPANHAMENTO</p>
+                    <h2 id="listaTitulo">Alunos da turma</h2>
+                </div>
+                <label class="search-field" for="busca">
+                    <span class="sr-only">Buscar aluno</span>
+                    <span aria-hidden="true">⌕</span>
+                    <input type="search" id="busca" placeholder="Buscar aluno..." autocomplete="off">
+                </label>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <caption class="sr-only">Lista de alunos, notas, médias, situação e ações disponíveis</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Aluno</th>
+                            <th scope="col">Nota 1</th>
+                            <th scope="col">Nota 2</th>
+                            <th scope="col">Média</th>
+                            <th scope="col">Situação</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaAlunos"></tbody>
+                </table>
+            </div>
+        </section>
+        <footer class="page-footer">Os dados ficam salvos neste navegador.</footer>
+    </main>
 </body>
 </html>

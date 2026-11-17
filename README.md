@@ -1,24 +1,23 @@
-# 📚 Gestão de Alunos
+# Gestão de Alunos
 
-Sistema desenvolvido em JavaScript utilizando Programação Orientada a Objetos (POO) para realizar o gerenciamento de alunos, cálculo de médias e armazenamento de dados no navegador através do LocalStorage.
+Aplicação de página única para cadastrar alunos, acompanhar notas e médias e editar ou remover registros. Os dados ficam salvos no `localStorage` do navegador.
 
 ## 🚀 Funcionalidades
 
-* Cadastro de alunos
-* Cálculo automático da média
-* Verificação de aprovação ou reprovação
-* Exclusão de alunos
-* Persistência dos dados com LocalStorage
-* Interface responsiva
-* Validação de campos obrigatórios
+* Cadastro, edição e exclusão de alunos
+* Cálculo automático da média entre duas notas
+* Situação calculada automaticamente: aprovado a partir de média 6,0
+* Busca por nome e resumo da quantidade de aprovados e reprovados
+* Persistência local no navegador
+* Formulário responsivo com validação de nome e notas entre 0 e 10
 
 ## 🛠️ Tecnologias Utilizadas
 
 * HTML5
 * CSS3
-* JavaScript (ES6+)
-* Programação Orientada a Objetos (POO)
-* LocalStorage
+* JavaScript (ES6+), sem dependências externas
+* Programação Orientada a Objetos
+* LocalStorage do navegador
 
 ## 📂 Estrutura do Projeto
 
@@ -31,51 +30,41 @@ gestao-alunos/
 └── README.md
 ```
 
-## 📖 Conceitos Aplicados
+## Conceitos Aplicados
 
 * Classes e Objetos
 * Construtores
 * Métodos
-* Encapsulamento básico
 * Manipulação do DOM
 * Eventos
 * Arrays
 * LocalStorage
-* Template Literals
+* Validação nativa de formulários
+* Renderização de conteúdo pelo DOM
 
-## 🎯 Regras do Sistema
+## Regras do Sistema
 
-* O usuário deve informar:
+* O cadastro exige nome, Nota 1 e Nota 2.
+* As notas aceitam valores de 0 a 10, com incrementos de 0,1.
+* A média é a soma das duas notas dividida por dois.
+* Média maior ou igual a 6,0: aprovado. Média menor que 6,0: reprovado.
 
-  * Nome do aluno
-  * Nota 1
-  * Nota 2
-
-* A média é calculada automaticamente.
-
-* Critério de aprovação:
-
-  * Média maior ou igual a 6,0 → Aprovado
-  * Média menor que 6,0 → Reprovado
-
-## 💾 Armazenamento
+## Armazenamento
 
 Os dados são armazenados localmente utilizando o LocalStorage do navegador, permitindo que os registros permaneçam salvos mesmo após atualizar a página.
 
-## 📱 Responsividade
+## Responsividade
 
 O sistema possui layout responsivo para utilização em computadores, tablets e smartphones.
 
-## ▶️ Como Executar
+## Como Executar
 
 1. Faça o download ou clone este repositório.
-2. Abra o arquivo `index.html` em qualquer navegador moderno.
-3. Comece a cadastrar alunos.
+2. Abra `index.html` em um navegador moderno.
+3. Cadastre um aluno pelo formulário. Use **Editar** ou **Excluir** na lista para gerenciar registros.
 
-## 👨‍💻 Autor
+## Autor
 
 Vinícius Blesa
 
-Projeto desenvolvido para fins de estudo e prática de Programação Orientada a Objetos com JavaScript.
-
-Desenvolvido com conhecimentos adquiridos durante os estudos acadêmicos e com o apoio dos conteúdos apresentados no bootcamp da Accenture.
+Projeto desenvolvido para fins de estudo e prática de JavaScript e Programação Orientada a Objetos.
